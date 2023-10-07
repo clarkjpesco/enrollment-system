@@ -4,11 +4,11 @@ function get(selector) {
   throw new Error(`ERROR: ${selector} not found!`);
 }
 const form = get("#form");
-var downloadButton = document.getElementById("downloadButton");
+var downloadButton = get("#downloadButton");
 let isValid = false;
 
-const closeBtn = document.querySelector(".close-btn");
-const modalOverlay = document.querySelector(".modal-overlay");
+const closeBtn = get(".close-btn");
+const modalOverlay = get(".modal-overlay");
 
 closeBtn.addEventListener("click", closeModal);
 
@@ -68,7 +68,7 @@ function storeFormData() {
 }
 
 function createQRCode(idNumber) {
-  var qrcodeElement = document.getElementById("qrcode");
+  var qrcodeElement = get("#qrcode");
 
   // Text or data you want to encode in the QR code
   var qrText = idNumber;
@@ -83,7 +83,7 @@ function createQRCode(idNumber) {
 
 // Function to trigger the download
 function downloadQRCode() {
-  var qrcodeElement = document.getElementById("qrcode");
+  var qrcodeElement = get("#qrcode");
   var canvas = qrcodeElement.querySelector("canvas");
   var image = new Image();
   image.src = canvas.toDataURL("image/png");
