@@ -4,8 +4,20 @@ function get(selector) {
   throw new Error(`ERROR: ${selector} not found!`);
 }
 const form = get("#form");
-
+var downloadButton = document.getElementById("downloadButton");
 let isValid = false;
+
+const closeBtn = document.querySelector(".close-btn");
+const modalOverlay = document.querySelector(".modal-overlay");
+
+closeBtn.addEventListener("click", closeModal);
+
+function openModal() {
+  modalOverlay.classList.add("open-modal");
+}
+function closeModal() {
+  modalOverlay.classList.remove("open-modal");
+}
 
 function validateForm() {
   isValid = form.checkValidity();
@@ -50,6 +62,37 @@ function storeFormData() {
     schoolyear: form.schoolyear.value,
   };
   console.log(user);
+  const idNumber = "565777879112";
+  createQRCode(idNumber);
+  openModal();
+}
+
+function createQRCode(idNumber) {
+  var qrcodeElement = document.getElementById("qrcode");
+
+  // Text or data you want to encode in the QR code
+  var qrText = idNumber;
+
+  // Create a QRCode object with the text and options
+  var qrcode = new QRCode(qrcodeElement, {
+    text: qrText,
+    width: 128,
+    height: 128,
+  });
+}
+
+// Function to trigger the download
+function downloadQRCode() {
+  var qrcodeElement = document.getElementById("qrcode");
+  var canvas = qrcodeElement.querySelector("canvas");
+  var image = new Image();
+  image.src = canvas.toDataURL("image/png");
+
+  // Create a temporary link for download
+  var a = document.createElement("a");
+  a.href = image.src;
+  a.download = "qrcode.png";
+  a.click();
 }
 
 function processFormData(e) {
@@ -62,3 +105,5 @@ function processFormData(e) {
 
 // Event listeners
 form.addEventListener("submit", processFormData);
+// Add a click event listener to the download button
+downloadButton.addEventListener("click", downloadQRCode);
