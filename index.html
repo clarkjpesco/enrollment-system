@@ -333,15 +333,33 @@
             <div class="course-information">
               <div class="form-group">
                 <label for="course">Course</label>
-                <input
-                  type="text"
-                  id="course"
-                  placeholder="Course"
-                  required
-                  minlength="3"
-                  maxlength="100"
-                  name="course"
-                />
+                <select type="text" name="course" id="course">
+                  <option value="bsa">
+                    Bachelor of Science in Accountancy
+                  </option>
+                  <option value="ab-polsci">
+                    Bachelor of Arts in Political Science
+                  </option>
+                  <option value="beed">
+                    Bachelor of Science in Elementary Education
+                  </option>
+                  <option value="bsed">
+                    Bachelor of Science in Secondary Education
+                  </option>
+                  <option value="bsba">
+                    Bachelor of Business Administration
+                  </option>
+                  <option value="bsit">
+                    Bachelor of Science in Information Technology
+                  </option>
+                  <option value="bsn">Bachelor of Science in Nursing</option>
+                  <option value="fpst">
+                    Deploma in Food Preparation and Services Technology
+                  </option>
+                  <option value="mpa">Master in Public Administration</option>
+                  <option value="jd">Juris Doctor</option>
+                  <option value="" selected>Course</option>
+                </select>
               </div>
 
               <div class="form-group">
@@ -359,15 +377,13 @@
 
               <div class="form-group">
                 <label for="courseyearlevel">Year Level</label>
-                <input
-                  type="text"
-                  id="courseyearlevel"
-                  placeholder="Year Level"
-                  required
-                  minlength="1"
-                  maxlength="1"
-                  name="courseyearlevel"
-                />
+                <select name="courseyearlevel" id="courseyearlevel">
+                  <option value="fist-year">1st</option>
+                  <option value="second-year">2nd</option>
+                  <option value="third-year">3rd</option>
+                  <option value="fourth-year">4th</option>
+                  <option value="" selected>Year Level</option>
+                </select>
               </div>
             </div>
 
@@ -386,7 +402,7 @@
               />
             </div>
 
-            <!-- Enrollment Type -->
+            <!-- Enrollment Type 
 
             <div class="enrollment-type-form">
               <p>Enrollment Type:</p>
@@ -429,7 +445,7 @@
                 />
                 <label for="transferee-student">Transferee</label>
               </div>
-            </div>
+            </div> -->
 
             <div class="grid-container">
               <div class="form-group">

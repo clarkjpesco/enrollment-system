@@ -56,7 +56,7 @@ function storeFormData() {
     coursemajor: form.coursemajor.value,
     courseyearlevel: form.courseyearlevel.value,
     courseshsstrand: form.courseshsstrand.value,
-    enrollmenttype: form.enrollmenttype.value,
+    // enrollmenttype: form.enrollmenttype.value,
 
     schoollastattended: form.schoollastattended.value,
     schoolyear: form.schoolyear.value,
@@ -107,3 +107,5 @@ function processFormData(e) {
 form.addEventListener("submit", processFormData);
 // Add a click event listener to the download button
 downloadButton.addEventListener("click", downloadQRCode);
+
+//home modal
