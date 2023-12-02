@@ -12,11 +12,12 @@ const modalOverlay = get(".modal-overlay");
 
 closeBtn.addEventListener("click", closeModal);
 
-function appendDiv() {
-  var addressInputText = document.getElementById("presentaddress");
+function appendDiv(addressType) {
+  console.log(`ADRESSTYPE: ${addressType}`);
+  var addressFieldText = document.getElementById(addressType);
   var appendedDiv = document.querySelector(".about");
-  var inputTextHeight = addressInputText.offsetHeight;
-  var inputTextWidth = addressInputText.offsetWidth;
+  var inputTextHeight = addressFieldText.offsetHeight;
+  var inputTextWidth = addressFieldText.offsetWidth;
   // Check if the appended div already exists
   if (!appendedDiv) {
     // Create a new div element
@@ -666,12 +667,12 @@ function appendDiv() {
     newDiv.className = "about";
 
     // Append the new div as a child node to the input text element
-    addressInputText.parentNode.insertBefore(
+    addressFieldText.parentNode.insertBefore(
       newDiv,
-      addressInputText.nextSibling
+      addressFieldText.nextSibling
     );
     // Set the top property based on the input text height
-    newDiv.style.top = addressInputText.offsetTop + inputTextHeight + "px";
+    newDiv.style.top = addressFieldText.offsetTop + inputTextHeight + "px";
     // Set the width property based on the input text width
     newDiv.style.width = inputTextWidth + "px";
 
@@ -683,7 +684,7 @@ function appendDiv() {
     const provinceList = document.querySelector(".provinceList");
     const cityList = document.querySelector(".cityList");
     const barangayList = document.querySelector(".barangayList");
-    const addressInput = document.querySelector("#presentaddress");
+    // const addressInput = document.getElementById(addressType);
     let tempAddressInput;
     about.addEventListener("click", function (e) {
       const id = e.target.dataset.id;
@@ -699,7 +700,7 @@ function appendDiv() {
         });
         const element = document.getElementById(id);
         element.classList.add("active");
-        addressInput.value = "";
+        addressFieldText.value = "";
       }
     });
 
@@ -715,8 +716,8 @@ function appendDiv() {
         console.log(`REGION ID: ${clickedItemAttributeValue}`);
         // Log the value to the console or do something else with it
         console.log(`REGION NAME: ${clickedItemValue}`);
-        addressInput.value = clickedItemValue;
-        console.log(addressInput.value);
+        addressFieldText.value = clickedItemValue;
+        console.log(addressFieldText.value);
         nextTab("province", btns, articles);
       }
     });
@@ -733,8 +734,8 @@ function appendDiv() {
         console.log(`province ID: ${provinceIdValue}`);
         // Log the value to the console or do something else with it
         console.log(`province NAME: ${clickedItemValue}`);
-        addressInput.value = `${
-          addressInput.value
+        addressFieldText.value = `${
+          addressFieldText.value
         }, ${clickedItemValue.trim()}`;
         nextTab("city");
       }
@@ -754,10 +755,10 @@ function appendDiv() {
         console.log(`CITY ID: ${cityIdValue}`);
         // Log the value to the console or do something else with it
         console.log(`CITY NAME: ${clickedItemValue.trim()}`);
-        addressInput.value = `${
-          addressInput.value
+        addressFieldText.value = `${
+          addressFieldText.value
         }, ${clickedItemValue.trim()}`;
-        tempAddressInput = addressInput.value;
+        tempAddressInput = addressFieldText.value;
         console.log(tempAddressInput);
         nextTab("barangay");
       }
@@ -779,7 +780,7 @@ function appendDiv() {
         console.log(`BARANGAY ID: ${barangayIdValue}`);
         // Log the value to the console or do something else with it
         console.log(`BARANGAY NAME: ${clickedItemValue.trim()}`);
-        addressInput.value = `${tempAddressInput}, ${clickedItemValue.trim()}`;
+        addressFieldText.value = `${tempAddressInput}, ${clickedItemValue.trim()}`;
       }
     });
 
@@ -802,17 +803,22 @@ function appendDiv() {
     }
 
     // Add click event listener to remove the div when the user clicks outside
+    // document.addEventListener("click", checkClickOutside);
     document.addEventListener("click", checkClickOutside);
   }
 }
 
 function checkClickOutside(event) {
   var addressInputText = document.getElementById("presentaddress");
+  var fatheraddressInputText = document.getElementById("fatherpresentaddress");
+  var motheraddressInputText = document.getElementById("motherpresentaddress");
   var appendedDiv = document.querySelector(".about");
 
   // Check if the clicked element is not the input text or the appended div
   if (
     event.target !== addressInputText &&
+    event.target !== fatheraddressInputText &&
+    event.target !== motheraddressInputText &&
     event.target !== appendedDiv &&
     !appendedDiv.contains(event.target)
   ) {
@@ -826,7 +832,21 @@ function checkClickOutside(event) {
   }
 }
 const addressInputText = document.getElementById("presentaddress");
-addressInputText.addEventListener("click", appendDiv);
+const fatheraddressInputText = document.getElementById("fatherpresentaddress");
+const motheraddressInputText = document.getElementById("motherpresentaddress");
+// addressInputText.addEventListener("click", appendDiv("presentaddress"));
+addressInputText.addEventListener("click", () => {
+  // Input is in focus.
+  appendDiv("presentaddress");
+});
+fatheraddressInputText.addEventListener("click", () => {
+  // Input is in focus.
+  appendDiv("fatherpresentaddress");
+});
+motheraddressInputText.addEventListener("click", () => {
+  // Input is in focus.
+  appendDiv("motherpresentaddress");
+});
 
 function openModal() {
   modalOverlay.classList.add("open-modal");
@@ -835,7 +855,9 @@ function closeModal() {
   modalOverlay.classList.remove("open-modal");
 }
 
-const contactNumber = get("#contactnumber"); // Replace 'yourInputElementId' with the actual ID of your input element.
+const contactNumber = get("#contactnumber");
+const fathercontactNumber = get("#fathermobile");
+const mothercontactNumber = get("#mothermobile");
 
 contactNumber.addEventListener("focus", () => {
   // Input is in focus.
@@ -843,6 +865,42 @@ contactNumber.addEventListener("focus", () => {
 });
 
 contactNumber.addEventListener("blur", (e) => {
+  // Input is out of focus.
+  console.log("Input is out of focus");
+  console.log(e.target.value);
+  let contactNumberValue = e.target.value;
+  if (has11Digits(contactNumberValue)) {
+    console.log("Input text contains 11 digits.");
+    e.target.value = addHyphens(contactNumberValue);
+  } else {
+    console.log("Input text does not contain 11 digits.");
+  }
+});
+
+fathercontactNumber.addEventListener("focus", () => {
+  // Input is in focus.
+  console.log("Input is in focus");
+});
+
+fathercontactNumber.addEventListener("blur", (e) => {
+  // Input is out of focus.
+  console.log("Input is out of focus");
+  console.log(e.target.value);
+  let contactNumberValue = e.target.value;
+  if (has11Digits(contactNumberValue)) {
+    console.log("Input text contains 11 digits.");
+    e.target.value = addHyphens(contactNumberValue);
+  } else {
+    console.log("Input text does not contain 11 digits.");
+  }
+});
+
+mothercontactNumber.addEventListener("focus", () => {
+  // Input is in focus.
+  console.log("Input is in focus");
+});
+
+mothercontactNumber.addEventListener("blur", (e) => {
   // Input is out of focus.
   console.log("Input is out of focus");
   console.log(e.target.value);
