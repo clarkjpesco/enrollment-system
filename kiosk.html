@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>KIOSK</title>
+    <link rel="stylesheet" href="css/kiosk.css" />
+    <link rel="stylesheet" href="fontawesome/css/all.min.css" />
+  </head>
+  <body>
+    <div id="showcase">
+      <div class="kioskbutton" id="enroll">
+        <i class="fa fa-home"></i>
+        <p class="lead">ENROLL NOW</p>
+      </div>
+      <div class="kioskbutton" id="paybill">
+        <i class="fa fa-home"></i>
+        <p class="lead">PAY BILLS</p>
+      </div>
+      <div class="kioskbutton" id="viewgrade">
+        <i class="fa fa-home"></i>
+        <p class="lead">VIEW GRADE</p>
+      </div>
+      <div class="kioskbutton" id="sample">
+        <i class="fa fa-home"></i>
+        <p class="lead">Hello</p>
+      </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal-container" id="modal">
+      <div class="modal">
+        <article class="enrollpagecontent">
+          <div class="enrollbtn-container">
+            <button class="enrolltab-btn active" data-id="newstudent">
+              New Student
+            </button>
+            <button class="enrolltab-btn" data-id="oldstudent">
+              Old Student
+            </button>
+          </div>
+
+          <article class="enrollform-content">
+            <div class="enrollcontentshowhide active" id="newstudent">
+              <h2 id="enrollnow">Welcome!</h2>
+              <form action="enrollnewstudent">
+                <div class="enrollgrid-container">
+                  <div class="enrollform-group">
+                    <input
+                      type="text"
+                      class="enrollinput"
+                      id="firstname"
+                      placeholder="First Name*"
+                      required
+                      name="firstname"
+                    />
+                  </div>
+                  <div class="enrollform-group">
+                    <input
+                      type="text"
+                      class="enrollinput"
+                      id="lastname"
+                      placeholder="Last Name*"
+                      required
+                      name="lastname"
+                    />
+                  </div>
+                </div>
+                <div class="enrollform-group">
+                  <input
+                    type="tel"
+                    class="enrollinput"
+                    id="contactnumber"
+                    placeholder="5555-555-5555"
+                    required=""
+                    pattern="[0-9]{4}-[0-9]{3}-[0-9]{4}"
+                    name="contactnumber"
+                  />
+                </div>
+                <button class="enrollbutton" type="submit">Get Started</button>
+              </form>
+            </div>
+            <div class="enrollcontentshowhide" id="oldstudent">
+              <h2 id="enrollnow">Welcome Back!</h2>
+              <form action="enrolloldstudent">
+                <div class="enrollform-group">
+                  <input
+                    type="text"
+                    class="enrollinput"
+                    id="lastname"
+                    placeholder="Last Name*"
+                    required
+                    name="lastname"
+                  />
+                </div>
+
+                <div class="enrollform-group">
+                  <input
+                    type="text"
+                    class="enrollinput"
+                    id="idnumber"
+                    placeholder="ID Number*"
+                    required
+                    name="lidnumber"
+                  />
+                </div>
+                <button class="enrollbutton" type="submit">Get Started</button>
+              </form>
+            </div>
+          </article>
+        </article>
+      </div>
+    </div>
+
+    <script src="js/kiosk.js"></script>
+  </body>
+</html>

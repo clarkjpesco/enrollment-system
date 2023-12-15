@@ -1,0 +1,221 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.7em;
+}
+
+.container {
+  max-width: 1100px;
+  height: 100%;
+  margin: auto;
+  margin-bottom: 10px;
+  padding: 0 20px;
+}
+
+/* kiosk */
+#showcase {
+  background: url(../img/cm-bg.jpg) no-repeat center center/cover;
+  color: #fff;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 50px;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  padding: 50px;
+}
+
+.kioskbutton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 240px;
+  background-color: #3498db; /* Default color */
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.kioskbutton:hover {
+  filter: brightness(1.2);
+}
+
+/* Different colors for each button */
+.kioskbutton:nth-child(2) {
+  background-color: #bf40bf;
+}
+
+.kioskbutton:nth-child(3) {
+  background-color: #bdb5d5;
+}
+
+.kioskbutton i {
+  margin-bottom: 2rem;
+  font-size: 64px; /* Adjust the icon size */
+}
+.lead {
+  font-size: 2.1rem;
+}
+
+/* .about */
+.enrollpagecontent {
+  background: #13232fe6;
+  /* border-radius: var(--radius); */
+  display: grid;
+  grid-template-rows: auto 1fr;
+  padding: 2.2rem;
+}
+/* .btn-container */
+.enrollbtn-container {
+  /* border-top-left-radius: var(--radius);
+    border-top-right-radius: var(--radius); */
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+/* .tab-btn:nth-child(1) {
+    border-top-left-radius: var(--radius);
+  }
+  .tab-btn:nth-child(3) {
+    border-top-right-radius: var(--radius);
+  } */
+
+/* .tab-btn */
+.enrolltab-btn {
+  padding: 1rem 0;
+  border: none;
+  text-transform: capitalize;
+  font-size: 1rem;
+  display: block;
+  background: #a0b3b040;
+  cursor: pointer;
+  color: #a0b3b0;
+  transition: 0.5s ease;
+}
+/* .tab-btn:hover:not(.active) */
+.enrolltab-btn:hover:not(.active) {
+  background: #1ab188;
+  color: #fff;
+}
+/* .about-content */
+.enrollform-content {
+  /* border-bottom-left-radius: var(--radius);
+    border-bottom-right-radius: var(--radius); */
+  /* padding: 2rem 1.5rem; */
+}
+/* hide content */
+/* .content */
+.enrollcontentshowhide {
+  display: none;
+}
+/* .tab-btn.active */
+.enrolltab-btn.active {
+  background: #1ab188;
+  color: #fff;
+}
+/* .content.active */
+.enrollcontentshowhide.active {
+  display: block;
+}
+
+/* .grid-container */
+.enrollgrid-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px; /* Adjust the gap as needed */
+}
+/* .form-group */
+.enrollform-group {
+  margin-bottom: 20px;
+}
+
+/* input,select */
+.enrollinput,
+.enrollselect {
+  font-size: 22px;
+  display: block;
+  width: 100%;
+  padding: 5px 10px;
+  background: none;
+  background-image: none;
+  border: 1px solid #a0b3b0;
+  color: #ffffff;
+  border-radius: 0;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+#enrollnow {
+  text-align: center;
+  color: #ffffff;
+  font-weight: 300;
+  margin: 40px 0px;
+  font-size: 2em;
+}
+/* .button */
+.enrollbutton {
+  border: 0;
+  outline: none;
+  border-radius: 0;
+  padding: 15px 0;
+  font-size: 2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  background: #1ab188;
+  color: #ffffff;
+  transition: all 0.5s ease;
+  -webkit-appearance: none;
+  isplay: block;
+  width: 100%;
+  margin-top: 40px;
+  cursor: pointer;
+}
+
+/* for modal */
+
+.modal-container {
+  background-color: rgba(0, 0, 0, 0.6);
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+.modal-container.show-modal {
+  display: block;
+}
+
+.modal {
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  position: absolute;
+  overflow: hidden;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 100%;
+  width: 600px;
+  animation-name: modalopen;
+  animation-duration: 1s;
+}
+
+@keyframes modalopen {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
