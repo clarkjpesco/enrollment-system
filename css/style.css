@@ -589,3 +589,87 @@ button:focus {
   width: 100%;
   margin-top: 40px;
 }
+
+/* goback button in registerform */
+#goback {
+  background: #444;
+  color: #fff;
+  z-index: 100;
+  position: fixed;
+  width: 64px;
+  height: 64px;
+  left: 25px;
+  top: 30px;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+/* Switch Toggle */
+.switch-wrapper {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.switch-wrapper span {
+  margin-left: 10px;
+  font-size: 1rem;
+}
+
+.toggle-text {
+  position: relative;
+  top: -4px;
+  right: 5px;
+  color: rgb(66, 66, 66);
+}
+
+.switch {
+  display: inline-block;
+  height: 34px;
+  position: relative;
+  width: 60px;
+}
+
+.switch input {
+  display: none;
+}
+
+.slider {
+  background: #ccc;
+  bottom: 0;
+  cursor: pointer;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: 0.4s;
+}
+
+.slider::before {
+  background: #fff;
+  bottom: 4px;
+  content: "";
+  height: 26px;
+  left: 4px;
+  position: absolute;
+  transition: 0.4s;
+  width: 26px;
+}
+
+input:checked + .slider {
+  /* background: var(--primary-color); */
+  background: #444;
+}
+
+input:checked + .slider::before {
+  transform: translateX(26px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round::before {
+  border-radius: 50%;
+}

@@ -1022,4 +1022,11 @@ form.addEventListener("submit", processFormData);
 // Add a click event listener to the download button
 downloadButton.addEventListener("click", downloadQRCode);
 
-//home modal
+//goback
+var goBackDiv = document.getElementById("goback");
+
+// Attach a click event listener to the div
+goBackDiv.addEventListener("click", function () {
+  // Go back to the previous page in the browser's history
+  window.history.back();
+});

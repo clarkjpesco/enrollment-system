@@ -4,11 +4,15 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Enrollment System | Registration</title>
-    <link rel="stylesheet" href="css/fontawesomestyle.css" />
+    <link rel="stylesheet" href="fontawesome/css/all.min.css" />
     <script src="js/qrcode.min.js"></script>
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
+    <div id="goback">
+      <i class="fas fa-arrow-left fa-3x"></i>
+    </div>
+
     <div id="main-content">
       <section id="page-title">
         <div class="container">
@@ -465,6 +469,30 @@
               </div>
             </div>
 
+            <div class="switch-wrapper">
+              <label class="switch">
+                <input type="checkbox" />
+                <div class="slider round"></div>
+              </label>
+              <span id="toggle-icon">
+                <span class="toggle-text"
+                  >All details are reviewed and confirmed as correct</span
+                >
+              </span>
+            </div>
+            <div class="switch-wrapper">
+              <label class="switch">
+                <input type="checkbox" />
+                <div class="slider round"></div>
+              </label>
+              <span id="toggle-icon">
+                <span class="toggle-text"
+                  >I have read and agree to the
+                  <a href="pptos.html"> [Privacy Policy]</a> and
+                  <a href="pptos.html">[Terms of Service]</a>.</span
+                >
+              </span>
+            </div>
             <button type="submit">Register</button>
           </form>
         </div>
