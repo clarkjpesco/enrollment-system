@@ -6,6 +6,7 @@ function get(selector) {
 const form = get("#form");
 var downloadButton = get("#downloadButton");
 let isValid = false;
+let togglesisValid = false;
 
 const closeBtn = get(".close-btn");
 const modalOverlay = get(".modal-overlay");
@@ -933,8 +934,30 @@ function addHyphens(inputText) {
   return outputText;
 }
 
+function validateToggles() {
+  var togglepptos = get("#togglepptos");
+  var toggledetails = get("#toggledetails");
+  console.log("at validateToggles");
+  if (!toggledetails.checked) {
+    alert(
+      "Please confirm that you have reviewed the details and confirmed as correct."
+    );
+    return false; // Prevent form submission
+  } else if (!togglepptos.checked) {
+    alert(
+      "Please confirm that you have read and agree to the terms and conditions."
+    );
+    return false; // Prevent form submission
+  } else {
+    return true;
+  }
+}
+
 function validateForm() {
-  isValid = form.checkValidity();
+  togglesisValid = validateToggles();
+  if (togglesisValid) {
+    isValid = form.checkValidity();
+  }
 }
 
 function storeFormData() {
